@@ -28,7 +28,7 @@ const dirs = {
 // Tasks
 
 // # Compile tasks
-gulp.task("compile:javascript:es6", function () {
+gulp.task('compile:javascript:es6', () => {
 	return gulp.src(dirs.assets.src.scripts + '/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(babel({
@@ -42,7 +42,7 @@ gulp.task("compile:javascript:es6", function () {
 		.pipe(gulp.dest(dirs.assets.dist.scripts));
 });
 
-gulp.task('compile:styles:scss', function() {
+gulp.task('compile:styles:scss', () => {
     return gulp.src(dirs.assets.src.styles + '/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass()).on('error', sass.logError)
@@ -52,3 +52,5 @@ gulp.task('compile:styles:scss', function() {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(dirs.assets.dist.styles));
 });
+
+gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss']);
