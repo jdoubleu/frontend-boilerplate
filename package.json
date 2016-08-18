@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://gitlab.com/jdoubleu/frontend-boilerplate/issues"
   },
-  "homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README"
+  "homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
