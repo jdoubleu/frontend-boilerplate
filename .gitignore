@@ -3,3 +3,5 @@
 ## Package Repositories
 node_modules/
 npm-debug.log
+bower_components/
+assets/vendor/
