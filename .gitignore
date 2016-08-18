@@ -1,1 +1,5 @@
 # .gitignore project scope
+
+## Package Repositories
+node_modules/
+npm-debug.log
