@@ -14,9 +14,12 @@ cache:
     - node_modules/
     - assets/vendor/
 
+# First install bower and gulp-cli globally and then
+# install/require all dependencies
 before_script:
+  - npm install -g bower gulp-cli
   - npm install
-  - ./node_modules/bower/bin/bower install --allow-root
+  - bower install --allow-root
 
 stages:
   - lint
@@ -24,7 +27,7 @@ stages:
 
 lint:all:
   stage: lint
-  script: node_modules/gulp/bin/gulp.js lint
+  script: gulp lint
   allow_failure: true
 
 buil:all:
@@ -33,7 +36,7 @@ buil:all:
    - /^v.*$/
    - /^env/.*$/
   script:
-    - node_modules/gulp/bin/gulp.js build
+    - gulp build
     - find assets/dist/ -name *.map -type f -exec rm -f {} \;
   artifacts:
     name: "${PKG_NAME}_${CI_BUILD_REF}"
