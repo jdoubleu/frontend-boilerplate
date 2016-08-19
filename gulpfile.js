@@ -55,6 +55,28 @@ gulp.task('compile:styles:scss', () => {
 
 gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss']);
 
+// # Build tasks
+gulp.task('build:javascript', ['compile:javascript:es6'], () => {
+	let uglify = require('gulp-uglify');
+    return gulp.src(dirs.assets.dist.scripts + "/**/*.js")
+        .pipe(uglify({
+			preserveComments: 'license'
+		}).on('error', function(e) {
+          console.error(e);
+          this.emit('end');
+        }))
+        .pipe(gulp.dest(dirs.assets.dist.scripts));
+});
+
+gulp.task('build:styles', ['compile:styles:scss'], () => {
+	let uglify = require('gulp-uglifycss');
+    return gulp.src(dirs.assets.dist.styles + '/**/*.css')
+		.pipe(uglify())
+		.pipe(gulp.dest(dirs.assets.dist.styles));
+});
+
+gulp.task('build', ['build:javascript', 'build:styles']);
+
 // # Watcher tasks
 gulp.task('watch:compile', ['compile'], () => {
 	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
