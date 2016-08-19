@@ -94,13 +94,20 @@ gulp.task('lint:styles:scss', () => {
         .pipe(sasslint.failOnError());
 });
 
+gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
+
 // # Watcher tasks
 gulp.task('watch:compile', ['compile'], () => {
 	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
     gulp.watch(dirs.assets.src.scripts + '/**/*.js', ['compile:javascript:es6']);
 });
 
-gulp.task('watch', ['watch:compile']);
+gulp.task('watch:lint', ['lint'], () => {
+	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['lint:styles:scss']);
+    gulp.watch(dirs.assets.src.scripts + '/**/*.js', ['lint:javascript:es6']);
+});
+
+gulp.task('watch', ['watch:lint', 'watch:compile']);
 
 // # Default tasks
 gulp.task('default', ['watch']);
