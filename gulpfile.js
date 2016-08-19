@@ -77,6 +77,15 @@ gulp.task('build:styles', ['compile:styles:scss'], () => {
 
 gulp.task('build', ['build:javascript', 'build:styles']);
 
+// # Linting tasks
+gulp.task('lint:javascript:es6', () => {
+	let eslint = require('gulp-eslint');
+	return gulp.src([dirs.assets.src.scripts + '/**/*.js'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
 // # Watcher tasks
 gulp.task('watch:compile', ['compile'], () => {
 	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
