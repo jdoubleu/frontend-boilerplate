@@ -1,0 +1,42 @@
+# Project's GitLab CI configuration
+
+# Use the global node.js docker image
+image: node
+
+# Global Vars
+variables:
+  PKG_NAME: "martin"
+
+# Global Caching rules, enabled per-branch and per-stage caching
+cache:
+  key: "$CI_BUILD_STAGE/$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules/
+    - assets/vendor/
+
+before_script:
+  - npm install
+  - ./node_modules/bower/bin/bower install --allow-root
+
+stages:
+  - lint
+  - build
+
+lint:all:
+  stage: lint
+  script: node_modules/gulp/bin/gulp.js lint
+  allow_failure: true
+
+buil:all:
+  stage: build
+  only:
+   - /^v.*$/
+   - /^env/.*$/
+  script:
+    - node_modules/gulp/bin/gulp.js build
+    - find assets/dist/ -name *.map -type f -exec rm -f {} \;
+  artifacts:
+    name: "${PKG_NAME}_${CI_BUILD_REF}"
+    paths:
+      - assets/dist/
+      - ./*.html
