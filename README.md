@@ -27,10 +27,12 @@ The bootstrap task for your next theme is very easy:
 
 Then you may follow this short todo list:
 1. Remove/Clear this readme file
-2. Maybe change the license
-3. Remove or edit the default `index.html` file
-4. Extend or remove the `humans.txt`
-5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
+2. Update `package.js` and `bower.json` with your details
+3. Maybe change the license
+4. Remove or edit the default `index.html` file
+5. Extend or remove the `humans.txt`
+6. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
+7. Remove the `CHANGELOG`
 
 ### Development
 When you are coding just run
