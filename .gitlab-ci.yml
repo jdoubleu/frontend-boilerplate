@@ -7,9 +7,9 @@ image: node
 variables:
   PKG_NAME: "martin"
 
-# Global Caching rules, enabled per-branch and per-stage caching
+# Global Caching rules, enabled per-ref caching
 cache:
-  key: "$CI_BUILD_STAGE/$CI_BUILD_REF_NAME"
+  key: "$CI_BUILD_REF_NAME"
   paths:
     - node_modules/
     - assets/vendor/
@@ -30,7 +30,7 @@ lint:all:
   script: gulp lint
   allow_failure: true
 
-buil:all:
+build:all:
   stage: build
   only:
    - /^v.*$/
@@ -43,3 +43,5 @@ buil:all:
     paths:
       - assets/dist/
       - ./*.html
+      - humans.txt
+      - LICENSE
