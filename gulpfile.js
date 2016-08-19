@@ -86,6 +86,14 @@ gulp.task('lint:javascript:es6', () => {
         .pipe(eslint.failAfterError());
 });
 
+gulp.task('lint:styles:scss', () => {
+	let sasslint = require('gulp-sass-lint');
+	return gulp.src([dirs.assets.src.styles + '/**/*.scss'])
+        .pipe(sasslint())
+        .pipe(sasslint.format())
+        .pipe(sasslint.failOnError());
+});
+
 // # Watcher tasks
 gulp.task('watch:compile', ['compile'], () => {
 	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
