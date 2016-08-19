@@ -5,6 +5,7 @@ It builds the base of each theme and can be used to bootstrap/start a new theme.
 This theme follows the coding guidelines of `jdoubleu` and implements its structure.
 
 ## License
-This boilerplate is licensed under [`MIT License`](LICENSE).
+This software is unlicensed, so you can build your own software upon it and may add another license 
+or create new boilerplates out of it, etc.
 
-Allowing you to create, share and modify own boilerplates out of it and use it for your theme.
+However this software uses several tools and programs which have different licenses. 
