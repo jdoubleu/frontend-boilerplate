@@ -1,10 +1,8 @@
 # Frontend Boilerplate
-This repo contains a boilerplate for all frontend themes and templates. 
-It builds the base of each theme and can be used to bootstrap/start a new theme.
+This repository contains another simple but powerful boilerplate for creating frontend themes. 
+It sets up a powerful an assistive environment for development and to write in meta language to common web technologies.
 
 ## Introduction
-This theme follows the coding guidelines of `jdoubleu` and implements its structure.
-
 It's a simple but powerful boilerplate for building frontend themes. However it is not perfect 
 at the time - and won't ever be - so I will update it continuously. You are welcome to open 
 an issue or creating a pull request.
