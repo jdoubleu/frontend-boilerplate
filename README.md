@@ -34,6 +34,31 @@ Then you may follow this short todo list:
 6. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
 7. Remove the `CHANGELOG`
 
+### Extending
+When you want to use additional frameworks you may add them with npm or bower. 
+While any package installed with bower is meant to be used in frontend npm packages are 
+meant for developing in first line.
+ 
+For example if you want to include a jQuery plugin install it with bower
+```
+bower install --save <package>
+```
+and include it in your html's heads
+```
+<script src="assets/vendor/<package>/somelib.js"></script>
+```
+
+When you want to use a frontend framework (e.g. [Bootstrap](getbootstrap.com)) it's nice if 
+it provides sass files. You can require it with bower, to include some scripts if it has, and 
+pass the sass files to the sass compiler in the gulp task in `gulpfile.js`.
+```JavaScript
+	...
+	.pipe(sass({
+		includePaths: ['path/to/sass/files']
+	})
+	...
+```
+
 ### Development
 When you are coding just run
 ```
