@@ -13,10 +13,7 @@ You need to have:
 * [`Bower`](https://bower.io/) installed for vendor package management
 
 Also recommended is:
-* [`gulp-cli`](https://www.npmjs.com/package/gulp-cli)
-  ```
-  npm install -g gulp-cli
-  ```
+* [`gulp-cli`](https://www.npmjs.com/package/gulp-cli) (`npm install -g gulp-cli`)
   
 All scripts and tasks are fitted to OSX/Linux so you may experience weird behaviour on Windows or others.
 
@@ -26,13 +23,13 @@ The bootstrap task for your next theme is very easy:
 * Fork this repository
 
 Then you may follow this short todo list:
-1. Remove/Clear this readme file
-2. Update `package.js` and `bower.json` with your details
-3. Maybe change the license
-4. Remove or edit the default `index.html` file
-5. Extend or remove the `humans.txt`
-6. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
-7. Remove the `CHANGELOG`
+1. Update `package.js` and `bower.json` with your details
+2. Maybe change the license
+3. Remove or edit the default `index.html` file
+4. Extend or remove the `humans.txt`
+5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
+6. Remove the `CHANGELOG`
+7. Remove/Clear this readme file
 
 ### Extending
 When you want to use additional frameworks you may add them with npm or bower. 
