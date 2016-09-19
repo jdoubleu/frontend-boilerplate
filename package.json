@@ -18,7 +18,7 @@
 		"theme"
 	],
 	"author": "Joshua Westerheide <dev@jdoubleu.de>",
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://gitlab.com/jdoubleu/frontend-boilerplate/issues"
 	},

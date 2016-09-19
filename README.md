@@ -101,7 +101,7 @@ Tools used:
 **Thank you!**
 
 ## License
-This software is unlicensed, so you can build your own software upon it and may add another license 
-or create new boilerplates out of it, etc.
+This software is under [MIT License](LICENSE). You are free to copy, modify, distribute this boilerplate.
+You can build your own boilerplate upon it or bootstrap a theme out of it.
 
 However this software uses several tools and programs which have different licenses. 
