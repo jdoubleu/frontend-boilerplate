@@ -90,8 +90,7 @@ gulp.task('lint:styles:scss', () => {
 	let sasslint = require('gulp-sass-lint');
 	return gulp.src([dirs.assets.src.styles + '/**/*.scss'])
         .pipe(sasslint())
-        .pipe(sasslint.format())
-        .pipe(sasslint.failOnError());
+        .pipe(sasslint.format());
 });
 
 gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
