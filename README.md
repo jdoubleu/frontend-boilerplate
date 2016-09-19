@@ -69,6 +69,10 @@ gulp lint
 The `default` and `watch` gulp task will watch the files and compile them if a change was detected. 
 `npm start` will just run the gulp default's task.
 
+#### Linting
+You can lookup all SCSS linting rules here: [https://github.com/sasstools/sass-lint/tree/develop/docs/rules](https://github.com/sasstools/sass-lint/tree/develop/docs/rules).
+There are more detailed information about what is wrong.
+
 ### Building
 There's already a configuration for the GitLab CI which will run lint's and builds the project 
 on pushes to refs like `vX.X.X` (e.g. version tags) and `env/*`. The building task also prepares 
