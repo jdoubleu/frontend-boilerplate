@@ -36,3 +36,7 @@ rules:
   no-empty-rulesets: 1
   url-quotes: 2
   leading-zero: 0
+  nesting-depth:
+    - 1
+    -
+      max-depth: '5'
