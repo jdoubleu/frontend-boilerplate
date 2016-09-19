@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Project gulpfile
  * Adds tasks to compile, lint and minify styles, scripts, etc.
