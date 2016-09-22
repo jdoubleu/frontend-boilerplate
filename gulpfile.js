@@ -84,8 +84,7 @@ gulp.task('lint:javascript:es6', () => {
 	let eslint = require('gulp-eslint');
 	return gulp.src([dirs.assets.src.scripts + '/**/*.js'])
         .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+        .pipe(eslint.format());
 });
 
 gulp.task('lint:styles:scss', () => {
