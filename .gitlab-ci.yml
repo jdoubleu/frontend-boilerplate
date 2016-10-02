@@ -5,7 +5,7 @@ image: node
 
 # Global Vars
 variables:
-  PKG_NAME: "martin"
+  PKG_NAME: "theme"
 
 # Global Caching rules, enabled per-ref caching
 cache:
