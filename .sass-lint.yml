@@ -40,3 +40,4 @@ rules:
     - 1
     -
       max-depth: '5'
+  property-sort-order: 0
