@@ -1,0 +1,40 @@
+# Project's Travis CI configuration
+
+# Use node.js image
+language: node_js
+
+# Global Caching
+cache:
+  directories:
+    - node_modules/
+    - assets/vendor/
+
+# First install bower and gulp-cli globally and then
+# install/require all dependencies
+before_script:
+  - npm install -g bower gulp-cli
+  - npm install
+  - bower install --allow-root
+
+# Define whitelist
+branches:
+  only:
+     - /^v.*$/
+     - /^env/.*$/
+
+# Compile files
+script:
+    - gulp build
+    - find assets/dist/ -name *.map -type f -exec rm -f {} \;
+
+# Build artifacts
+# uncomment the following lines to deploy artifacts
+# be sure to set environment variables for aws
+# see more here: https://docs.travis-ci.com/user/uploading-artifacts/
+# addons:
+#  artifacts:
+#    paths:
+#      - assets/dist/
+#      - ./*.html
+#      - humans.txt
+#      - LICENSE
