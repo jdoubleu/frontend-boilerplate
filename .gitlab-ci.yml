@@ -42,6 +42,7 @@ build:all:
     name: "${PKG_NAME}_${CI_BUILD_REF}"
     paths:
       - assets/dist/
+      - assets/vendor/
       - ./*.html
       - humans.txt
       - LICENSE

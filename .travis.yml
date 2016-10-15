@@ -35,6 +35,7 @@ script:
 #  artifacts:
 #    paths:
 #      - assets/dist/
+#      - assets/vendor/
 #      - ./*.html
 #      - humans.txt
 #      - LICENSE
