@@ -11,6 +11,7 @@ let sourcemaps = require("gulp-sourcemaps");
 let babel = require("gulp-babel");
 let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
+let concat = require('gulp-concat');
 
 // Constants
 const dirs = {
@@ -24,7 +25,8 @@ const dirs = {
 			scripts: 'assets/dist/scripts'
 		},
 		vendor: 'assets/vendor/'
-	}
+	},
+	mergeScriptsName: 'all.js'
 };
 
 // Tasks
@@ -40,6 +42,7 @@ gulp.task('compile:javascript:es6', () => {
 			console.error(e);
 			this.emit('end');
 		})
+		.pipe(concat(dirs.mergeScriptsName))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(dirs.assets.dist.scripts));
 });
@@ -67,6 +70,7 @@ gulp.task('build:javascript', ['compile:javascript:es6'], () => {
           console.error(e);
           this.emit('end');
         }))
+		.pipe(concat(dirs.mergeScriptsName))
         .pipe(gulp.dest(dirs.assets.dist.scripts));
 });
 
