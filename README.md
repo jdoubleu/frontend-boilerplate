@@ -96,6 +96,7 @@ Tools used:
 * [Gulp](http://gulpjs.com/)
 * [Babel](https://babeljs.io/)
 * [ESLint](http://eslint.org/)
+* [SASS](http://sass-lang.com/)
 * [sass-lint](https://github.com/sasstools/sass-lint)
 * [UglifyJs2](https://github.com/mishoo/UglifyJS2)
 * [UglifyCSS](https://github.com/fmarcia/UglifyCSS)
