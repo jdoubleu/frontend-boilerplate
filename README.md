@@ -22,7 +22,9 @@ The bootstrap task for your next theme is very easy:
 * Pull the latest `master` from this repository and copy all files into your new project's folder **or**
 * Fork this repository
 
-Then you may follow this short todo list:
+Next step is to install all (development) dependencies: `npm install && bower install`.
+
+You may also follow this short todo list to change the package meta information:
 1. Update `package.js` and `bower.json` with your details
 2. Maybe change the license
 3. Remove or edit the default `index.html` file
