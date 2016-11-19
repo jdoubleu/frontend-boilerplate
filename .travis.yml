@@ -19,8 +19,7 @@ before_script:
 # Define whitelist
 branches:
   only:
-     - /^v.*$/
-     - /^env/.*$/
+     - master
 
 # Compile files
 script:

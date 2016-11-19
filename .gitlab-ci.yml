@@ -33,8 +33,7 @@ lint:all:
 build:all:
   stage: build
   only:
-   - /^v.*$/
-   - /^env/.*$/
+   - master
   script:
     - gulp build
     - find assets/dist/ -name *.map -type f -exec rm -f {} \;
