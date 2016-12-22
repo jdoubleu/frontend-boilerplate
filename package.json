@@ -1,40 +1,40 @@
 {
-	"name": "yafb",
-	"version": "1.1.0",
-	"description": "A simple frontend theme boilerplate implementing coding guideline of jdoubleu",
-	"main": "index.js",
-	"scripts": {
-		"start": "node_modules/gulp/bin/gulp.js default",
-		"test": "echo \"Only linting:\n\" && node_modules/gulp/bin/gulp.js lint",
-		"postinstall": "node_modules/gulp/bin/gulp.js compile"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://gitlab.com/jdoubleu/frontend-boilerplate.git"
-	},
-	"keywords": [
-		"frontend",
-		"boilerplate",
-		"html",
-		"theme"
-	],
-	"author": "Joshua Westerheide <dev@jdoubleu.de>",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://gitlab.com/jdoubleu/frontend-boilerplate/issues"
-	},
-	"homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README",
-	"devDependencies": {
-		"babel-eslint": "^6.1.2",
-		"babel-preset-es2015": "^6.13.2",
-		"gulp": "^3.9.1",
-		"gulp-autoprefixer": "^3.1.1",
-		"gulp-babel": "^6.1.2",
-		"gulp-eslint": "^3.0.1",
-		"gulp-sass": "^2.3.2",
-		"gulp-sass-lint": "^1.2.0",
-		"gulp-sourcemaps": "^1.6.0",
-		"gulp-uglify": "^2.0.0",
-		"gulp-uglifycss": "^1.0.6"
-	}
+  "name": "yafb",
+  "version": "1.1.0",
+  "description": "A simple frontend theme boilerplate implementing coding guideline of jdoubleu",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/gulp/bin/gulp.js default",
+    "test": "echo \"Only linting:\n\" && node_modules/gulp/bin/gulp.js lint",
+    "postinstall": "node_modules/gulp/bin/gulp.js compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/jdoubleu/frontend-boilerplate.git"
+  },
+  "keywords": [
+    "frontend",
+    "boilerplate",
+    "html",
+    "theme"
+  ],
+  "author": "Joshua Westerheide <dev@jdoubleu.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/jdoubleu/frontend-boilerplate/issues"
+  },
+  "homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.13.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sass-lint": "^1.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-uglifycss": "^1.0.6"
+  }
 }

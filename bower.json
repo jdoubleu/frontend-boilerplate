@@ -1,24 +1,24 @@
 {
-	"name": "frontend-boilerplate",
-	"description": "A simple frontend theme boilerplate implementing coding guideline of jdoubleu",
-	"main": "index.js",
-	"authors": [
-		"Joshua Westerheide <dev@jdoubleu.de>"
-	],
-	"license": "MIT",
-	"keywords": [
-		"frontend",
-		"boilerplate",
-		"html",
-		"theme"
-	],
-	"homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"assets/vendor",
-		"test",
-		"tests"
-	]
+  "name": "frontend-boilerplate",
+  "description": "A simple frontend theme boilerplate implementing coding guideline of jdoubleu",
+  "main": "index.js",
+  "authors": [
+    "Joshua Westerheide <dev@jdoubleu.de>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "boilerplate",
+    "html",
+    "theme"
+  ],
+  "homepage": "https://gitlab.com/jdoubleu/frontend-boilerplate#README",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ]
 }
