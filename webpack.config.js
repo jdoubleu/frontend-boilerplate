@@ -24,6 +24,14 @@ module.exports = {
 	module: {
         rules: [
 
+        	// ESLint
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				enforce: 'pre',
+				loader: "eslint-loader",
+			},
+
         	// ECMAScript 6
             {
                 test: /\.js$/,
@@ -69,5 +77,5 @@ module.exports = {
 				]
 			}
         ],
-    }
+    },
 };
