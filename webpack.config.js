@@ -20,5 +20,27 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'assets/dist/scripts/')
-	}
+	},
+	module: {
+        rules: [
+
+        	// ECMAScript 6
+            {
+                test: /\.js$/,
+				exclude: [
+					/node_modules/
+				],
+				use: [
+
+					// Babel transpiler
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: ['es2015']
+						}
+					}
+				]
+            }
+        ],
+    }
 };
