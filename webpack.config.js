@@ -40,6 +40,19 @@ module.exports = {
 						}
 					}
 				]
+            },
+
+			// Styles (css-only)
+            {
+                test: /\.css$/,
+				exclude: [
+					/node_modules/
+				],
+				use: [
+					// Default webpack style and css loaders
+					"style-loader",
+					"css-loader"
+				]
             }
         ],
     }
