@@ -13,6 +13,7 @@ let path = require('path');
 
 // Tools Includes
 let webpack = require('webpack');
+let stylelintPlugin = require('stylelint-webpack-plugin');
 
 // Webpack configuration
 module.exports = {
@@ -21,6 +22,11 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'assets/dist/scripts/')
 	},
+	plugins: [
+		new stylelintPlugin({
+			configFile: path.resolve(__dirname, '.stylelintrc')
+		})
+	],
 	module: {
         rules: [
 
