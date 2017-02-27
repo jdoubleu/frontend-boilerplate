@@ -65,7 +65,20 @@ module.exports = {
 				use: [
 					// Default webpack style and css loaders
 					"style-loader",
-					"css-loader"
+					"css-loader",
+
+					// PostCSS
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [
+								// Autoprefixer
+								require('autoprefixer')({
+									browsers: ["last 2 version"]
+								})
+							]
+						}
+					},
 				]
             },
 
@@ -75,6 +88,19 @@ module.exports = {
 				use: [
 					"style-loader",
 					"css-loader",
+
+					// PostCSS
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [
+								// Autoprefixer
+								require('autoprefixer')({
+									browsers: ["last 2 version"]
+								})
+							]
+						}
+					},
 
 					// Sass loader
 					{
