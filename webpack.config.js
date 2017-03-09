@@ -56,32 +56,6 @@ module.exports = {
 				]
             },
 
-			// Styles (css-only)
-            {
-                test: /\.css$/,
-				exclude: [
-					/node_modules/
-				],
-				use: [
-					// Default webpack style and css loaders
-					"style-loader",
-					"css-loader",
-
-					// PostCSS
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: [
-								// Autoprefixer
-								require('autoprefixer')({
-									browsers: ["last 2 version"]
-								})
-							]
-						}
-					},
-				]
-            },
-
 			// Styles (SCSS)
 			{
 				test: /\.scss$/,
