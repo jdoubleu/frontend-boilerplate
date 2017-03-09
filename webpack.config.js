@@ -25,6 +25,9 @@ module.exports = {
 	plugins: [
 		new stylelintPlugin({
 			configFile: path.resolve(__dirname, '.stylelintrc')
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: process.env.NODE_ENV === 'production'
 		})
 	],
 	module: {
