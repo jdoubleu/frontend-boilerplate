@@ -1078,6 +1078,10 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
+eslint-config-jdoubleu@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-jdoubleu/-/eslint-config-jdoubleu-0.1.1.tgz#658a6ec7ab6f9d364993f074929443286f30112e"
+
 eslint@^3.0.0:
   version "3.17.1"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.17.1.tgz#b80ae12d9c406d858406fccda627afce33ea10ea"
@@ -1976,6 +1980,10 @@ isobject@^2.0.0:
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
+
+jdoubleu-stylelint-config@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/jdoubleu-stylelint-config/-/jdoubleu-stylelint-config-0.1.3.tgz#023f42ceffca528b8c50cb6b13b42c28b872e39d"
 
 jodid25519@^1.0.0:
   version "1.0.2"

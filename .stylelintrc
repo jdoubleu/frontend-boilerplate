@@ -1,4 +1,5 @@
  {
+    "extends": "jdoubleu-stylelint-config",
 	"rules": {
 		"indentation": "tab",
 		"max-nesting-depth": 5,

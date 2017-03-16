@@ -11,7 +11,8 @@
         "browser": true
     },
 	"extends": [
-		"eslint:recommended"
+		"eslint:recommended",
+		"jdoubleu"
 	],
     "rules": {
         "indent": ["error", "tab"],
