@@ -19,9 +19,10 @@ let stylelintPlugin = require('stylelint-webpack-plugin');
 const environments = ['development', 'production'];
 
 // Helper functions
-let d = function(...envs) {
+/** Maps input to environment. Order is important and must match environments constant. */
+const d = (...envs) => {
 	const currentEnv = (i = environments.indexOf(process.env.NODE_ENV)) === -1 ? environments[i = 0] : environments[i];
-	return i < envs.length ? envs[i] : envs[0];
+	return i < envs.length ? envs[i] : (envs.length > 0 ? envs[0] : undefined);
 };
 
 // Webpack configuration
