@@ -39,8 +39,12 @@ module.exports = {
 		let modules = {},
 			folders = fs.readdirSync(paths.entry);
 		folders.forEach(folder => {
-			fs.accessSync(mod = path.resolve(paths.entry, folder, folder + '.js'), fs.constants.F_OK); // Do file check and throw if error happened
-			modules[folder] = mod;
+			try {
+				fs.accessSync(mod = path.resolve(paths.entry, folder, folder + '.js'), fs.constants.F_OK); // Do file check and throw if error happened
+				modules[folder] = mod;
+			} catch(e) {
+				console.error("Tried to add file " + folder + '.js but failed: ' + e);
+			}
 		});
 		return modules;
 	},
