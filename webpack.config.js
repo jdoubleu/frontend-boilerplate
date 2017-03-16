@@ -73,7 +73,15 @@ module.exports = {
             filename: "commons.js",
             name: "commons"
         }),
-		d(undefined, new ExtractTextPlugin('[name].css'))
+		d(undefined, new ExtractTextPlugin('[name].css')),
+		d(new class DynamicEntrypointsWatcher {
+			apply(compiler) {
+				if(!!compiler.options.watch) {
+					let watcher = compiler.watch({}, () => true);
+					watcher.watch([], [paths.entry], []);
+				}
+			}
+		})
 	]),
 	module: {
         rules: [
