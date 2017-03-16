@@ -20,8 +20,14 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 // Settings
 const environments = ['development', 'production'];
 const paths = {
+	context: path.resolve(__dirname, 'assets/'),
 	entry: path.resolve(__dirname, 'assets/src/modules/'),
-	output: path.resolve(__dirname, 'assets/dist/')
+	output: path.resolve(__dirname, 'assets/dist/'),
+	public: path.resolve(__dirname, 'assets/dist/'),
+	files: {
+		"js": path.resolve(__dirname, 'assets/dist/scripts/'),
+		"css": path.resolve(__dirname, 'assets/dist/styles/')
+	}
 };
 
 // Helper functions
