@@ -57,8 +57,11 @@ module.exports = {
 	output: {
 		path: paths.output,
 		filename: "[name].bundle.js",
-        chunkFilename: "[id].chunk.js"
+        chunkFilename: "[id].chunk.js",
+		publicPath: paths.public
 	},
+	context: paths.context,
+	cache: d(false, true),
 	plugins: c([
 		new stylelintPlugin({
 			configFile: path.resolve(__dirname, '.stylelintrc')
