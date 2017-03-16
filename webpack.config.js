@@ -15,6 +15,15 @@ let path = require('path');
 let webpack = require('webpack');
 let stylelintPlugin = require('stylelint-webpack-plugin');
 
+// Contsants
+const environments = ['development', 'production'];
+
+// Helper functions
+let d = function(...envs) {
+	const currentEnv = (i = environments.indexOf(process.env.NODE_ENV)) === -1 ? environments[i = 0] : environments[i];
+	return i < envs.length ? envs[i] : envs[0];
+};
+
 // Webpack configuration
 module.exports = {
 	entry: './assets/src/scripts/main.js',
