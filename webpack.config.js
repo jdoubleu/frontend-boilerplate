@@ -10,13 +10,18 @@
 
 // System Includes
 let path = require('path');
+let fs = require('fs');
 
 // Tools Includes
 let webpack = require('webpack');
 let stylelintPlugin = require('stylelint-webpack-plugin');
 
-// Contsants
+// Settings
 const environments = ['development', 'production'];
+const paths = {
+	entry: path.resolve(__dirname, 'assets/src/modules/'),
+	output: path.resolve(__dirname, 'assets/dist/')
+};
 
 // Helper functions
 /** Maps input to environment. Order is important and must match environments constant. */
@@ -29,10 +34,19 @@ const c = (a) => a.filter(e => !typeof e == "undefined");
 
 // Webpack configuration
 module.exports = {
-	entry: './assets/src/scripts/main.js',
+	entry: () => {
+		let modules = {},
+			folders = fs.readdirSync(paths.entry);
+		folders.forEach(folder => {
+			fs.accessSync(mod = path.resolve(paths.entry, folder, folder + '.js'), fs.constants.F_OK); // Do file check and throw if error happened
+			modules[folder] = mod;
+		});
+		return modules;
+	},
 	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'assets/dist/scripts/')
+		path: paths.output,
+		filename: "[name].bundle.js",
+        chunkFilename: "[id].chunk.js"
 	},
 	plugins: [
 		new stylelintPlugin({
