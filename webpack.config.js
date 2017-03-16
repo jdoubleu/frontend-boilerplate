@@ -31,7 +31,7 @@ const d = (...envs) => {
 	return i < envs.length ? envs[i] : (envs.length > 0 ? envs[0] : undefined);
 };
 /** Cleans an array and filters undefined values. */
-const c = (a) => a.filter(e => !typeof e == "undefined");
+const c = (a) => a.filter(e => typeof e != "undefined");
 
 // Webpack configuration
 module.exports = {
