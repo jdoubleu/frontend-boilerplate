@@ -64,7 +64,7 @@ module.exports = {
             filename: "commons.js",
             name: "commons"
         }),
-		d("", new ExtractTextPlugin('[name].css'))
+		d(undefined, new ExtractTextPlugin('[name].css'))
 	]),
 	module: {
         rules: [
