@@ -15,6 +15,7 @@ let fs = require('fs');
 // Tools Includes
 let webpack = require('webpack');
 let stylelintPlugin = require('stylelint-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Settings
 const environments = ['development', 'production'];
@@ -48,14 +49,19 @@ module.exports = {
 		filename: "[name].bundle.js",
         chunkFilename: "[id].chunk.js"
 	},
-	plugins: [
+	plugins: c([
 		new stylelintPlugin({
 			configFile: path.resolve(__dirname, '.stylelintrc')
 		}),
 		new webpack.optimize.UglifyJsPlugin({
-			compress: process.env.NODE_ENV === 'production'
-		})
-	],
+			compress: d(false, true)
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+            filename: "commons.js",
+            name: "commons"
+        }),
+		d("", new ExtractTextPlugin('[name].css'))
+	]),
 	module: {
         rules: [
 
@@ -88,28 +94,36 @@ module.exports = {
 			// Styles (SCSS)
 			{
 				test: /\.scss$/,
-				use: [
-					"style-loader",
-					"css-loader",
+				use: d(
+					// Development: load styles inline
+					sconf = [
+						"style-loader",
+						"css-loader",
 
-					// PostCSS
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: [
-								// Autoprefixer
-								require('autoprefixer')({
-									browsers: ["last 2 version"]
-								})
-							]
+						// PostCSS
+						{
+							loader: 'postcss-loader',
+							options: {
+								plugins: [
+									// Autoprefixer
+									require('autoprefixer')({
+										browsers: ["last 2 version"]
+									})
+								]
+							}
+						},
+
+						// Sass loader
+						{
+							loader: "sass-loader"
 						}
-					},
-
-					// Sass loader
-					{
-						loader: "sass-loader"
-					}
-				]
+					],
+					// Production: Create stylesheets as own files
+					ExtractTextPlugin.extract({
+						fallback: "style-loader",
+						use: sconf
+					})
+				)
 			}
         ],
     },
