@@ -88,10 +88,14 @@ gulp.task('lint:javascript:es6', () => {
 });
 
 gulp.task('lint:styles:scss', () => {
-	let sasslint = require('gulp-sass-lint');
+	let stylelint = require('gulp-stylelint');
 	return gulp.src([dirs.assets.src.styles + '/**/*.scss'])
-        .pipe(sasslint())
-        .pipe(sasslint.format());
+        .pipe(stylelint({
+        	failAfterError: false,
+			reporters: [
+				{formatter: 'string', console: true}
+			]
+        }));
 });
 
 gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
