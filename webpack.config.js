@@ -24,6 +24,8 @@ const d = (...envs) => {
 	const currentEnv = (i = environments.indexOf(process.env.NODE_ENV)) === -1 ? environments[i = 0] : environments[i];
 	return i < envs.length ? envs[i] : (envs.length > 0 ? envs[0] : undefined);
 };
+/** Cleans an array and filters undefined values. */
+const c = (a) => a.filter(e => !typeof e == "undefined");
 
 // Webpack configuration
 module.exports = {
