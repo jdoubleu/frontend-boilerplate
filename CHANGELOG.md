@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to the `frontend-boilerplate` by `jdoubleu`.
 
+## [1.2.0] - 2017-03-18
+### Changed
+- Using stylelint instead of sass-lint
+- Using jdoubleu's eslint and stylelint config as base config
+
 ## [1.1.0] - 2016-11-19
 ### Added
 - Defined sass linting rule nesting-deph

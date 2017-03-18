@@ -99,7 +99,7 @@ Tools used:
 * [Babel](https://babeljs.io/)
 * [ESLint](http://eslint.org/)
 * [SASS](http://sass-lang.com/)
-* [sass-lint](https://github.com/sasstools/sass-lint)
+* [sass-lint](https://stylelint.io/)
 * [UglifyJs2](https://github.com/mishoo/UglifyJS2)
 * [UglifyCSS](https://github.com/fmarcia/UglifyCSS)
 * ... and many more!
