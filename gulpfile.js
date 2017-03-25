@@ -11,17 +11,20 @@ let sourcemaps = require("gulp-sourcemaps");
 let babel = require("gulp-babel");
 let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
+let pug = require('gulp-pug');
 
 // Constants
 const dirs = {
 	assets: {
 		src: {
 			styles: 'assets/src/styles',
-			scripts: 'assets/src/scripts'
+			scripts: 'assets/src/scripts',
+			templates: 'assets/src/templates'
 		},
 		dist: {
 			styles: 'assets/dist/styles',
-			scripts: 'assets/dist/scripts'
+			scripts: 'assets/dist/scripts',
+			templates: 'assets/dist/templates'
 		},
 		vendor: 'assets/vendor/'
 	}
@@ -55,7 +58,13 @@ gulp.task('compile:styles:scss', () => {
         .pipe(gulp.dest(dirs.assets.dist.styles));
 });
 
-gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss']);
+gulp.task('compile:templates:pug', () => {
+	return gulp.src(dirs.assets.src.templates + '/**/*.pug')
+		.pipe(pug())
+		.pipe(gulp.dest(dirs.assets.dist.templates));
+});
+
+gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug']);
 
 // # Build tasks
 gulp.task('build:javascript', ['compile:javascript:es6'], () => {
@@ -77,7 +86,9 @@ gulp.task('build:styles', ['compile:styles:scss'], () => {
 		.pipe(gulp.dest(dirs.assets.dist.styles));
 });
 
-gulp.task('build', ['build:javascript', 'build:styles']);
+gulp.task('build:templates', ['compile:templates:pug']);
+
+gulp.task('build', ['build:javascript', 'build:styles', 'build:templates']);
 
 // # Linting tasks
 gulp.task('lint:javascript:es6', () => {
@@ -104,6 +115,7 @@ gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
 gulp.task('watch:compile', ['compile'], () => {
 	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
     gulp.watch(dirs.assets.src.scripts + '/**/*.js', ['compile:javascript:es6']);
+    gulp.watch(dirs.assets.src.templates + '/**/*.pug', ['compile:templates:pug']);
 });
 
 gulp.task('watch:lint', ['lint'], () => {
