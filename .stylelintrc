@@ -1,16 +1,4 @@
 {
 	"extends": "jdoubleu-stylelint-config",
-	"rules": {
-		"indentation": "tab",
-		"max-nesting-depth": 5,
-		"block-no-empty": true,
-		"block-opening-brace-newline-after": "always",
-		"block-closing-brace-newline-before": "always",
-		"no-missing-end-of-source-newline": null,
-		"block-opening-brace-space-before": "always",
-		"rule-empty-line-before": "always",
-		"color-hex-length": "long",
-		"color-hex-case": "lower",
-		"number-leading-zero": null
-	}
+	"rules": {}
 }

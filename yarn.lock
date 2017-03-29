@@ -2064,9 +2064,9 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-jdoubleu-stylelint-config@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/jdoubleu-stylelint-config/-/jdoubleu-stylelint-config-0.1.3.tgz#023f42ceffca528b8c50cb6b13b42c28b872e39d"
+jdoubleu-stylelint-config@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/jdoubleu-stylelint-config/-/jdoubleu-stylelint-config-0.1.4.tgz#8df4cc969c22eaebc06ab3041eb49c0606e86065"
 
 jodid25519@^1.0.0:
   version "1.0.2"
