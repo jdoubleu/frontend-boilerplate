@@ -75,6 +75,32 @@ gulp lint
 The `default` and `watch` gulp task will watch the files and compile them if a change was detected. 
 `npm start` will just run the gulp default's task.
 
+#### Folder structure
+The structure you introduce in the `source directory` (`src/`) will be preserved in the `distribution directory` (`dist/`).
+So you can use a splitted directory tree, where each asset type is in its own directory (e.g. scripts in `scripts`, styles in `styles`, etc.):
+```
+src/
+|-- scripts
+|   `-- app.js
+|-- styles
+|   `-- app.scss
+`-- templates
+    `-- main.pug
+```
+Or you can use a module inspired directory tree where each asset type is in the folder of its belonging module:
+```
+src/
+|-- app
+|   |-- app.js
+|   |-- app.scss
+|   `-- template.pug
+`-- module1
+    |-- helper.js
+    `-- main.js
+```
+Of course you can mix them or use your own. 
+Through the ["globstar"](https://github.com/isaacs/node-glob#glob-primer) you are free to use every structure. 
+
 #### Linting
 You can lookup all SCSS linting rules here: [https://github.com/sasstools/sass-lint/tree/develop/docs/rules](https://github.com/sasstools/sass-lint/tree/develop/docs/rules).
 There are more detailed information about what is wrong.
