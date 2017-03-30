@@ -9,6 +9,6 @@ assets/vendor/
 ## Project files
 
 ### Compiled
-assets/dist/scripts/
-assets/dist/styles/
-assets/dist/templates/
+assets/dist/*
+!assets/dist/images
+!assets/dist/fonts
