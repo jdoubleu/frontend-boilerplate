@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to the `frontend-boilerplate` by `jdoubleu`.
 
+## [1.4.0] - 2017-03-30
+### Changed
+- Dropped old predefined assets folder structure and enabled a more freer one
+
 ## [1.3.0] - 2017-03-25
 ### Added
 - Added pug template compiler
