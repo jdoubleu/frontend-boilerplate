@@ -128,7 +128,7 @@ Tools used:
 * [Pug](https://pugjs.org/)
 * [sass-lint](https://stylelint.io/)
 * [UglifyJs2](https://github.com/mishoo/UglifyJS2)
-* [UglifyCSS](https://github.com/fmarcia/UglifyCSS)
+* [clean-css](https://github.com/jakubpawlowicz/clean-css)
 * ... and many more!
 * ... and all their subpackages
 
