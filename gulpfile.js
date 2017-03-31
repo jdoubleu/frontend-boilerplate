@@ -80,7 +80,7 @@ gulp.task('compile:templates:pug', () => {
 		.pipe(gulp.dest(dirs.assets.dist));
 });
 
-gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug']);
+gulp.task('compile', gulp.parallel('compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug'));
 
 // # Linting tasks
 gulp.task('lint:javascript:es6', () => {
@@ -101,21 +101,21 @@ gulp.task('lint:styles:scss', () => {
         }));
 });
 
-gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
+gulp.task('lint', gulp.parallel('lint:javascript:es6', 'lint:styles:scss'));
 
 // # Watcher tasks
-gulp.task('watch:compile', ['compile'], () => {
-	gulp.watch(dirs.assets.src + '/**/*.scss', ['compile:styles:scss']);
-    gulp.watch(dirs.assets.src + '/**/*.js', ['compile:javascript:es6']);
-    gulp.watch(dirs.assets.src + '/**/*.pug', ['compile:templates:pug']);
-});
+gulp.task('watch:compile', gulp.series('compile', function watchCompile() {
+	gulp.watch(dirs.assets.src + '/**/*.scss', gulp.parallel('compile:styles:scss'));
+    gulp.watch(dirs.assets.src + '/**/*.js', gulp.parallel('compile:javascript:es6'));
+    gulp.watch(dirs.assets.src + '/**/*.pug', gulp.parallel('compile:templates:pug'));
+}));
 
-gulp.task('watch:lint', ['lint'], () => {
-	gulp.watch(dirs.assets.src + '/**/*.scss', ['lint:styles:scss']);
-    gulp.watch(dirs.assets.src + '/**/*.js', ['lint:javascript:es6']);
-});
+gulp.task('watch:lint', gulp.series('lint', function watchLint() {
+	gulp.watch(dirs.assets.src + '/**/*.scss', gulp.parallel('lint:styles:scss'));
+    gulp.watch(dirs.assets.src + '/**/*.js', gulp.parallel('lint:javascript:es6'));
+}));
 
-gulp.task('watch', ['watch:lint', 'watch:compile']);
+gulp.task('watch', gulp.parallel('watch:lint', 'watch:compile'));
 
 // # Default tasks
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.parallel('watch'));
