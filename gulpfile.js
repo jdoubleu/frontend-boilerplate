@@ -80,7 +80,7 @@ gulp.task('compile:templates:pug', () => {
 		.pipe(gulp.dest(dirs.assets.dist));
 });
 
-gulp.task('compile', gulp.parallel('compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug'));
+gulp.task('compile', gulp.series('clean', gulp.parallel('compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug')));
 
 // # Linting tasks
 gulp.task('lint:javascript:es6', () => {
