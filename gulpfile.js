@@ -32,7 +32,7 @@ gulp.task('clean', () => {
 });
 
 // # Compile tasks
-gulp.task('compile:javascript:es6', () => {
+function compileES6() {
 	let stream = gulp.src(dirs.assets.src + '/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(babel({
@@ -55,10 +55,12 @@ gulp.task('compile:javascript:es6', () => {
 		stream.pipe(sourcemaps.write('./'));
 
 	return stream.pipe(gulp.dest(dirs.assets.dist));
-});
+}
 
-gulp.task('compile:styles:scss', () => {
-    let stream = gulp.src(dirs.assets.src + '/**/*.scss')
+gulp.task('compile:javascript:es6', compileES6);
+
+function compileSCSS() {
+	let stream = gulp.src(dirs.assets.src + '/**/*.scss')
 		.pipe(sourcemaps.init())
         .pipe(sass()).on('error', sass.logError)
         .pipe(autoprefixer({
@@ -72,25 +74,33 @@ gulp.task('compile:styles:scss', () => {
 		stream.pipe(sourcemaps.write('./'));
 
 	return stream.pipe(gulp.dest(dirs.assets.dist));
-});
+}
 
-gulp.task('compile:templates:pug', () => {
+gulp.task('compile:styles:scss', compileSCSS);
+
+function compilePUG() {
 	return gulp.src(dirs.assets.src + '/**/*.pug')
 		.pipe(pug())
 		.pipe(gulp.dest(dirs.assets.dist));
-});
+}
 
-gulp.task('compile', gulp.series('clean', gulp.parallel('compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug')));
+gulp.task('compile:templates:pug', compilePUG);
+
+let compile = gulp.series('clean', gulp.parallel(compileES6, compileES6, compilePUG));
+
+gulp.task('compile', compile);
 
 // # Linting tasks
-gulp.task('lint:javascript:es6', () => {
+function lintES6() {
 	let eslint = require('gulp-eslint');
 	return gulp.src([dirs.assets.src + '/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format());
-});
+}
 
-gulp.task('lint:styles:scss', () => {
+gulp.task('lint:javascript:es6', lintES6);
+
+function lintSCSS() {
 	let stylelint = require('gulp-stylelint');
 	return gulp.src([dirs.assets.src + '/**/*.scss'])
         .pipe(stylelint({
@@ -99,23 +109,33 @@ gulp.task('lint:styles:scss', () => {
 				{formatter: 'string', console: true}
 			]
         }));
-});
+}
 
-gulp.task('lint', gulp.parallel('lint:javascript:es6', 'lint:styles:scss'));
+gulp.task('lint:styles:scss', lintSCSS);
+
+let lint = gulp.parallel(lintES6, lintSCSS);
+
+gulp.task('lint', lint);
 
 // # Watcher tasks
-gulp.task('watch:compile', gulp.series('compile', function watchCompile() {
-	gulp.watch(dirs.assets.src + '/**/*.scss', gulp.parallel('compile:styles:scss'));
-    gulp.watch(dirs.assets.src + '/**/*.js', gulp.parallel('compile:javascript:es6'));
-    gulp.watch(dirs.assets.src + '/**/*.pug', gulp.parallel('compile:templates:pug'));
-}));
+function watchCompile() {
+	gulp.watch(dirs.assets.src + '/**/*.scss', compileSCSS);
+    gulp.watch(dirs.assets.src + '/**/*.js', compileES6);
+    gulp.watch(dirs.assets.src + '/**/*.pug', compilePUG);
+}
 
-gulp.task('watch:lint', gulp.series('lint', function watchLint() {
-	gulp.watch(dirs.assets.src + '/**/*.scss', gulp.parallel('lint:styles:scss'));
-    gulp.watch(dirs.assets.src + '/**/*.js', gulp.parallel('lint:javascript:es6'));
-}));
+gulp.task('watch:compile', gulp.series(compile, watchCompile));
 
-gulp.task('watch', gulp.parallel('watch:lint', 'watch:compile'));
+function watchLint() {
+	gulp.watch(dirs.assets.src + '/**/*.scss', lintSCSS);
+    gulp.watch(dirs.assets.src + '/**/*.js', lintES6);
+}
+
+gulp.task('watch:lint', gulp.series(lint, watchLint));
+
+let watch = gulp.parallel(watchCompile, watchLint);
+
+gulp.task('watch', watch);
 
 // # Default tasks
-gulp.task('default', gulp.parallel('watch'));
+gulp.task('default', gulp.series(compile, watch));
