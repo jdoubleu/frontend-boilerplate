@@ -72,7 +72,7 @@ gulp.task('build:javascript', ['compile:javascript:es6'], () => {
 });
 
 gulp.task('build:styles', ['compile:styles:scss'], () => {
-	let uglify = require('gulp-uglifycss');
+	let uglify = require('gulp-clean-css');
     return gulp.src(dirs.assets.dist + '/**/*.css')
 		.pipe(uglify())
 		.pipe(gulp.dest(dirs.assets.dist));
