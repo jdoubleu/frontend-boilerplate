@@ -28,7 +28,7 @@ const dirs = {
 
 // # Compile tasks
 gulp.task('compile:javascript:es6', () => {
-	return gulp.src(dirs.assets.src + '/**/*.js')
+	let stream = gulp.src(dirs.assets.src + '/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ['es2015']
@@ -36,20 +36,37 @@ gulp.task('compile:javascript:es6', () => {
 		.on('error', function(e) {
 			console.error(e);
 			this.emit('end');
-		})
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(dirs.assets.dist));
+		});
+
+	if(prod) {
+		let uglify = require('gulp-uglify');
+		stream.pipe(uglify({
+				preserveComments: 'license'
+			}).on('error', function(e) {
+			  console.error(e);
+			  this.emit('end');
+			}));
+	} else
+		stream.pipe(sourcemaps.write('./'));
+
+	return stream.pipe(gulp.dest(dirs.assets.dist));
 });
 
 gulp.task('compile:styles:scss', () => {
-    return gulp.src(dirs.assets.src + '/**/*.scss')
-        .pipe(sourcemaps.init())
+    let stream = gulp.src(dirs.assets.src + '/**/*.scss')
+		.pipe(sourcemaps.init())
         .pipe(sass()).on('error', sass.logError)
         .pipe(autoprefixer({
         	browsers: ['last 2 versions', 'IE 9']
-        }))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(dirs.assets.dist));
+        }));
+
+    if(prod) {
+    	let uglify = require('gulp-uglifycss');
+    	stream.pipe(uglify());
+	} else
+		stream.pipe(sourcemaps.write('./'));
+
+	return stream.pipe(gulp.dest(dirs.assets.dist));
 });
 
 gulp.task('compile:templates:pug', () => {
@@ -59,30 +76,6 @@ gulp.task('compile:templates:pug', () => {
 });
 
 gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss', 'compile:templates:pug']);
-
-// # Build tasks
-gulp.task('build:javascript', ['compile:javascript:es6'], () => {
-	let uglify = require('gulp-uglify');
-    return gulp.src(dirs.assets.dist + "/**/*.js")
-        .pipe(uglify({
-			preserveComments: 'license'
-		}).on('error', function(e) {
-          console.error(e);
-          this.emit('end');
-        }))
-        .pipe(gulp.dest(dirs.assets.dist));
-});
-
-gulp.task('build:styles', ['compile:styles:scss'], () => {
-	let uglify = require('gulp-uglifycss');
-    return gulp.src(dirs.assets.dist + '/**/*.css')
-		.pipe(uglify())
-		.pipe(gulp.dest(dirs.assets.dist));
-});
-
-gulp.task('build:templates', ['compile:templates:pug']);
-
-gulp.task('build', ['build:javascript', 'build:styles', 'build:templates']);
 
 // # Linting tasks
 gulp.task('lint:javascript:es6', () => {
