@@ -26,6 +26,10 @@ const dirs = {
 };
 
 // Tasks
+// # General tasks
+gulp.task('clean', () => {
+	return del([dirs.assets.dist]);
+});
 
 // # Compile tasks
 gulp.task('compile:javascript:es6', () => {
