@@ -13,6 +13,7 @@ let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
 let pug = require('gulp-pug');
 let argv = require('yargs').argv;
+let del = require('del');
 
 // Constants
 const prod = process.env.NODE_ENV === 'production' || argv.production || argv.prod;
