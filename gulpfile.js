@@ -66,7 +66,7 @@ gulp.task('compile:styles:scss', () => {
         }));
 
     if(prod) {
-    	let uglify = require('gulp-uglifycss');
+    	let uglify = require('gulp-clean-css');
     	stream.pipe(uglify());
 	} else
 		stream.pipe(sourcemaps.write('./'));

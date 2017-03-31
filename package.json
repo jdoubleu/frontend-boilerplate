@@ -32,13 +32,13 @@
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.0.4",
     "gulp-eslint": "^3.0.1",
     "gulp-pug": "^3.3.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylelint": "^3.9.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-uglifycss": "^1.0.6",
     "jdoubleu-stylelint-config": "^0.1.4",
     "yargs": "^7.0.2"
   }
