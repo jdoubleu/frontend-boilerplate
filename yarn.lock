@@ -717,6 +717,12 @@ clean-css@^3.3.0:
     commander "2.8.x"
     source-map "0.4.x"
 
+clean-css@^4.0.9:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.0.10.tgz#6be448d6ba8c767654ebe11f158b97a887cb713f"
+  dependencies:
+    source-map "0.5.x"
+
 cli-cursor@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
@@ -1598,6 +1604,15 @@ gulp-babel@^6.1.2:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
+gulp-clean-css@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/gulp-clean-css/-/gulp-clean-css-3.0.4.tgz#0c5ad8d045407c88f3c2b9f03570963967dcfd54"
+  dependencies:
+    clean-css "^4.0.9"
+    gulp-util "^3.0.8"
+    through2 "^2.0.3"
+    vinyl-sourcemaps-apply "^0.2.1"
+
 gulp-eslint@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/gulp-eslint/-/gulp-eslint-3.0.1.tgz#04e57e3e18c6974267c12cf6855dc717d4a313bd"
@@ -1665,15 +1680,7 @@ gulp-uglify@^2.0.0:
     uglify-save-license "^0.4.1"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-uglifycss@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/gulp-uglifycss/-/gulp-uglifycss-1.0.6.tgz#e5145352fe0a1bc946188ad1f055dd9acfa09960"
-  dependencies:
-    gulp-util "~3.0.7"
-    through2 "~2.0.1"
-    uglifycss "~0.0.20"
-
-gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.2, gulp-util@^3.0.6, gulp-util@^3.0.8, gulp-util@~3.0.7:
+gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.2, gulp-util@^3.0.6, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -3293,7 +3300,7 @@ source-map@0.4.x, source-map@^0.4.2:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.X, source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.6, source-map@~0.5.1:
+source-map@0.5.x, source-map@0.X, source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
@@ -3536,7 +3543,7 @@ text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-through2@2.X, through2@^2.0.0, through2@^2.0.3, through2@~2.0.1:
+through2@2.X, through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
@@ -3626,10 +3633,6 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
-uglifycss@~0.0.20:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/uglifycss/-/uglifycss-0.0.25.tgz#bea72bf4979eacef13a302cf47b2d1af3f344197"
-
 unc-path-regex@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
@@ -3696,7 +3699,7 @@ vinyl-fs@^0.3.0:
     through2 "^0.6.1"
     vinyl "^0.4.0"
 
-vinyl-sourcemaps-apply@^0.2.0:
+vinyl-sourcemaps-apply@^0.2.0, vinyl-sourcemaps-apply@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
   dependencies:
