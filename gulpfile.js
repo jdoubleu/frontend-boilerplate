@@ -33,9 +33,7 @@ function clean() {
 function scripts() {
 	let stream = gulp.src(PATHS.src + FILES.es6)
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-			presets: ['es2015']
-		}))
+		.pipe(babel())
 		.on('error', function(e) {
 			console.error(e);
 			this.emit('end');
