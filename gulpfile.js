@@ -106,7 +106,7 @@ function watch() {
 // Gulp tasks
 exports.clean = clean;
 
-let compile = gulp.series(clean, gulp.parallel(scripts, scripts, templates));
+let compile = gulp.series(clean, gulp.parallel(scripts, styles, templates));
 exports.compile = compile;
 
 let lint = gulp.parallel(lintScripts, lintStyles);
