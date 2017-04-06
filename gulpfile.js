@@ -76,15 +76,20 @@ function templates() {
 
 // # Linter functions
 function lintScripts() {
-	return gulp.src(PATHS.src + FILES.es6)
+	let stream = gulp.src(PATHS.src + FILES.es6)
         .pipe(eslint())
         .pipe(eslint.format());
+
+	if(PRODUCTION)
+		stream = stream.pipe(eslint.failAfterError());
+
+	return stream;
 }
 
 function lintStyles() {
 	return gulp.src(PATHS.src + FILES.scss)
         .pipe(stylelint({
-        	failAfterError: false,
+        	failAfterError: PRODUCTION,
 			reporters: [
 				{
 					formatter: 'string',
