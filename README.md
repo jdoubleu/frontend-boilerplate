@@ -29,7 +29,7 @@ You may also follow this short todo list to change the package meta information:
 2. Maybe change the license
 3. Remove or edit the default `index.html` file
 4. Extend or remove the `humans.txt`
-5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
+5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.stylelintrc` to your needs
 6. Remove the `CHANGELOG`
 7. Remove/Clear this readme file
 
@@ -102,7 +102,7 @@ Of course you can mix them or use your own.
 Through the ["globstar"](https://github.com/isaacs/node-glob#glob-primer) you are free to use every structure. 
 
 #### Linting
-You can lookup all SCSS linting rules here: [https://github.com/sasstools/sass-lint/tree/develop/docs/rules](https://github.com/sasstools/sass-lint/tree/develop/docs/rules).
+You can lookup all SCSS linting rules here: [https://stylelint.io/user-guide/rules/](https://stylelint.io/user-guide/rules/).
 There are more detailed information about what is wrong.
 
 ### Workflow
@@ -126,7 +126,7 @@ Tools used:
 * [ESLint](http://eslint.org/)
 * [SASS](http://sass-lang.com/)
 * [Pug](https://pugjs.org/)
-* [sass-lint](https://stylelint.io/)
+* [stylelint](https://stylelint.io/)
 * [UglifyJs2](https://github.com/mishoo/UglifyJS2)
 * [clean-css](https://github.com/jakubpawlowicz/clean-css)
 * ... and many more!
