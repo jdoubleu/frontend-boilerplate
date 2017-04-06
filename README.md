@@ -14,6 +14,9 @@ You need to have:
 
 Also recommended is:
 * [`gulp-cli`](https://www.npmjs.com/package/gulp-cli) (`npm install -g gulp-cli`)
+
+***NOTE:*** Gulp and Bower are also installed as `devDependencies`. You should yet only using 
+the local version of gulp because it's a alpha version installed via "git clone".
   
 All scripts and tasks are fitted to OSX/Linux so you may experience weird behaviour on Windows or others.
 
