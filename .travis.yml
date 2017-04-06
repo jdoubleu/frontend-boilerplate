@@ -23,6 +23,7 @@ branches:
 
 # Compile files
 script:
+    - NODE_ENV=production gulp lint
     - NODE_ENV=production gulp compile
 
 # Build artifacts
