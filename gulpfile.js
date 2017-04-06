@@ -57,9 +57,7 @@ function styles() {
 	let stream = gulp.src(PATHS.src + FILES.scss)
 		.pipe(sourcemaps.init())
         .pipe(sass()).on('error', sass.logError)
-        .pipe(autoprefixer({
-        	browsers: ['last 2 versions', 'IE 9']
-        }));
+        .pipe(autoprefixer());
 
     if(PRODUCTION) {
     	let uglify = require('gulp-clean-css');
