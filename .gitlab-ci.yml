@@ -17,8 +17,9 @@ cache:
 # First install bower and gulp-cli globally and then
 # install/require all dependencies
 before_script:
-  - npm install -g bower gulp-cli
-  - npm install
+  - yarn global add bower
+  - yarn install
+  - export PATH=$(yarn bin):$PATH
   - bower install --allow-root
 
 stages:
