@@ -39,7 +39,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylelint": "^3.9.0",
     "gulp-uglify": "^2.0.0",
-    "jdoubleu-stylelint-config": "^0.1.4",
-    "yargs": "^7.0.2"
+    "jdoubleu-stylelint-config": "^0.1.4"
   }
 }

@@ -9,11 +9,10 @@ let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
 let stylelint = require('gulp-stylelint');
 let pug = require('gulp-pug');
-let argv = require('yargs').argv;
 let del = require('del');
 
 // Constants
-const PRODUCTION = process.env.NODE_ENV === 'production' || argv.production || argv.prod;
+const PRODUCTION = process.env.NODE_ENV === 'production';
 const PATHS = {
 	src: 'assets/src',
 	dest: 'assets/dist'
