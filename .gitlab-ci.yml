@@ -28,21 +28,19 @@ stages:
 
 lint:all:
   stage: lint
-  script: gulp lint
-  allow_failure: true
+  script: NODE_ENV=production gulp lint
 
 build:all:
   stage: build
   only:
    - master
   script:
-    - gulp build
-    - find assets/dist/ -name *.map -type f -exec rm -f {} \;
+    - NODE_ENV=production gulp build
   artifacts:
     name: "${PKG_NAME}_${CI_BUILD_REF}"
     paths:
-      - assets/dist/
-      - assets/vendor/
+      - dist/
+      - assets/
       - ./*.html
       - humans.txt
       - LICENSE
