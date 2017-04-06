@@ -14,8 +14,8 @@ let del = require('del');
 // Constants
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const PATHS = {
-	src: 'assets/src',
-	dest: 'assets/dist'
+	src: 'src',
+	dest: 'dist'
 };
 const FILES = {
 	es6: '/**/*.js',
