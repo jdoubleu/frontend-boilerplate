@@ -12,8 +12,8 @@ cache:
 # First install bower and gulp-cli globally and then
 # install/require all dependencies
 before_script:
-  - npm install -g bower gulp-cli
-  - npm install
+  - yarn install
+  - export PATH=$(yarn bin):$PATH
   - bower install --allow-root
 
 # Define whitelist
@@ -23,8 +23,7 @@ branches:
 
 # Compile files
 script:
-    - gulp build
-    - find assets/dist/ -name *.map -type f -exec rm -f {} \;
+    - NODE_ENV=production gulp compile
 
 # Build artifacts
 # uncomment the following lines to deploy artifacts
@@ -33,7 +32,7 @@ script:
 # addons:
 #  artifacts:
 #    paths:
-#      - assets/dist/
+#      - dist/
 #      - assets/vendor/
 #      - ./*.html
 #      - humans.txt
