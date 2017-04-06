@@ -1,4 +1,4 @@
 {
-	"extends": "jdoubleu-stylelint-config",
-	"rules": {}
+  "extends": "jdoubleu-stylelint-config",
+  "rules": {}
 }
