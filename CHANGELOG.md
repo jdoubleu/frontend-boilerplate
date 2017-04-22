@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to the `frontend-boilerplate` by `jdoubleu`.
 
+## [2.0.0] - 2017-04-22
+### Changed
+- Updated gulpjs to version 4 to use its new features and adjusted the gulp tasks
+
 ## [1.4.0] - 2017-03-30
 ### Changed
 - Dropped old predefined assets folder structure and enabled a more freer one
