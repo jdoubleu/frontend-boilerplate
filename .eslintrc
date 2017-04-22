@@ -1,26 +1,49 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "script",
-        "ecmaFeatures": {
-         	"impliedStrict": true
-        }
-    },
-	"parser": "babel-eslint",
-	"env": {
-        "browser": true
-    },
-	"extends": [
-		"eslint:recommended",
-		"jdoubleu"
-	],
-    "rules": {
-        "indent": ["error", "tab"],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["warn", "single"],
-        "semi": ["error", "always"],
-		"camelcase": ["warn", { "properties": "always" }],
-        "comma-dangle": ["error", "never"],
-        "no-cond-assign": ["error", "except-parens"]
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+    "ecmaFeatures": {
+      "impliedStrict": true
     }
+  },
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "jdoubleu"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "warn",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "camelcase": [
+      "warn",
+      {
+        "properties": "always"
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "no-cond-assign": [
+      "error",
+      "except-parens"
+    ]
+  }
 }

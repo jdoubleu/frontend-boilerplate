@@ -14,6 +14,9 @@ You need to have:
 
 Also recommended is:
 * [`gulp-cli`](https://www.npmjs.com/package/gulp-cli) (`npm install -g gulp-cli`)
+
+***NOTE:*** Gulp and Bower are also installed as `devDependencies`. You should yet only using 
+the local version of gulp because it's a alpha version installed via "git clone".
   
 All scripts and tasks are fitted to OSX/Linux so you may experience weird behaviour on Windows or others.
 
@@ -29,7 +32,7 @@ You may also follow this short todo list to change the package meta information:
 2. Maybe change the license
 3. Remove or edit the default `index.html` file
 4. Extend or remove the `humans.txt`
-5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.sass-lint.yml` to your needs
+5. Update the coding standard in `.editorconfig`, `.eslintrc` and `.stylelintrc` to your needs
 6. Remove the `CHANGELOG`
 7. Remove/Clear this readme file
 
@@ -44,7 +47,7 @@ bower install --save <package>
 ```
 and include it in your html's heads
 ```
-<script src="assets/vendor/<package>/somelib.js"></script>
+<script src="dist/vendor/<package>/somelib.js"></script>
 ```
 
 When you want to use a frontend framework (e.g. [Bootstrap](getbootstrap.com)) it's nice if 
@@ -58,12 +61,8 @@ pass the sass files to the sass compiler in the gulp task in `gulpfile.js`.
 	...
 ```
 
-#### Merge Scripts together
-This is a feature and if you want all your scripts megred together into a single one (e.g. `all.js`) there is already a solution.
-Check out the [`merge-scripts`](https://gitlab.com/jdoubleu/frontend-boilerplate/tree/merge-scripts) branch and maybe change the name of the merged file in the [`gulpfile.js`](https://gitlab.com/jdoubleu/frontend-boilerplate/blob/merge-scripts/gulpfile.js).
-
-### Development
-When you are coding just run
+### Workflow
+When you are developing your project, run the following commands:
 ```
 npm start
 ```
@@ -75,8 +74,34 @@ gulp lint
 The `default` and `watch` gulp task will watch the files and compile them if a change was detected. 
 `npm start` will just run the gulp default's task.
 
+#### Folder structure
+The structure you introduce in the `source directory` (`src/`) will be preserved in the `distribution directory` (`dist/`).
+So you can use a splitted directory tree, where each asset type is in its own directory (e.g. scripts in `scripts`, styles in `styles`, etc.):
+```
+src/
+|-- scripts
+|   `-- app.js
+|-- styles
+|   `-- app.scss
+`-- templates
+    `-- main.pug
+```
+Or you can use a module inspired directory tree where each asset type is in the folder of its belonging module:
+```
+src/
+|-- app
+|   |-- app.js
+|   |-- app.scss
+|   `-- template.pug
+`-- module1
+    |-- helper.js
+    `-- main.js
+```
+Of course you can mix them or use your own. 
+Through the ["globstar"](https://github.com/isaacs/node-glob#glob-primer) you are free to use every structure. 
+
 #### Linting
-You can lookup all SCSS linting rules here: [https://github.com/sasstools/sass-lint/tree/develop/docs/rules](https://github.com/sasstools/sass-lint/tree/develop/docs/rules).
+You can lookup all SCSS linting rules here: [https://stylelint.io/user-guide/rules/](https://stylelint.io/user-guide/rules/).
 There are more detailed information about what is wrong.
 
 ### Workflow
@@ -99,9 +124,10 @@ Tools used:
 * [Babel](https://babeljs.io/)
 * [ESLint](http://eslint.org/)
 * [SASS](http://sass-lang.com/)
-* [sass-lint](https://stylelint.io/)
+* [Pug](https://pugjs.org/)
+* [stylelint](https://stylelint.io/)
 * [UglifyJs2](https://github.com/mishoo/UglifyJS2)
-* [UglifyCSS](https://github.com/fmarcia/UglifyCSS)
+* [clean-css](https://github.com/jakubpawlowicz/clean-css)
 * ... and many more!
 * ... and all their subpackages
 

@@ -9,4 +9,4 @@
 	Last update: 2016/08/20
 	Doctype: HTML5
 	IDE: PHPStorm
-	Tools: Node.js, bower, gulp, Babel, SASS, ESLint, sass-lint
+	Tools: Node.js, bower, gulp, Babel, SASS, ESLint, stylelint

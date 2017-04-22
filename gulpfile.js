@@ -1,117 +1,124 @@
 'use strict';
 
-/**
- * Project gulpfile
- * Adds tasks to compile, lint and minify styles, scripts, etc.
- */
-
 // Requirements
 let gulp = require('gulp');
 let sourcemaps = require("gulp-sourcemaps");
 let babel = require("gulp-babel");
+let eslint = require('gulp-eslint');
 let autoprefixer = require('gulp-autoprefixer');
 let sass = require('gulp-sass');
+let stylelint = require('gulp-stylelint');
+let pug = require('gulp-pug');
+let del = require('del');
 
 // Constants
-const dirs = {
-	assets: {
-		src: {
-			styles: 'assets/src/styles',
-			scripts: 'assets/src/scripts'
-		},
-		dist: {
-			styles: 'assets/dist/styles',
-			scripts: 'assets/dist/scripts'
-		},
-		vendor: 'assets/vendor/'
-	}
+const PRODUCTION = process.env.NODE_ENV === 'production';
+const PATHS = {
+	src: 'src',
+	dest: 'dist'
+};
+const FILES = {
+	es6: '/**/*.js',
+	scss: '/**/*.scss',
+	pug: '/**/*.pug'
 };
 
 // Tasks
+// # General tasks
+function clean() {
+	return del([PATHS.dest]);
+}
 
-// # Compile tasks
-gulp.task('compile:javascript:es6', () => {
-	return gulp.src(dirs.assets.src.scripts + '/**/*.js')
+// # Compiler functions
+function scripts() {
+	let stream = gulp.src(PATHS.src + FILES.es6)
 		.pipe(sourcemaps.init())
-		.pipe(babel({
-			presets: ['es2015']
-		}))
+		.pipe(babel())
 		.on('error', function(e) {
 			console.error(e);
 			this.emit('end');
-		})
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(dirs.assets.dist.scripts));
-});
+		});
 
-gulp.task('compile:styles:scss', () => {
-    return gulp.src(dirs.assets.src.styles + '/**/*.scss')
-        .pipe(sourcemaps.init())
+	if(PRODUCTION) {
+		let uglify = require('gulp-uglify');
+		stream.pipe(uglify({
+				preserveComments: 'license'
+			}).on('error', function(e) {
+			  console.error(e);
+			  this.emit('end');
+			}));
+	} else
+		stream.pipe(sourcemaps.write('./'));
+
+	return stream.pipe(gulp.dest(PATHS.dest));
+}
+
+function styles() {
+	let stream = gulp.src(PATHS.src + FILES.scss)
+		.pipe(sourcemaps.init())
         .pipe(sass()).on('error', sass.logError)
-        .pipe(autoprefixer({
-        	browsers: ['last 2 versions', 'IE 9']
-        }))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(dirs.assets.dist.styles));
-});
+        .pipe(autoprefixer());
 
-gulp.task('compile', ['compile:javascript:es6', 'compile:styles:scss']);
+    if(PRODUCTION) {
+    	let uglify = require('gulp-clean-css');
+    	stream.pipe(uglify());
+	} else
+		stream.pipe(sourcemaps.write('./'));
 
-// # Build tasks
-gulp.task('build:javascript', ['compile:javascript:es6'], () => {
-	let uglify = require('gulp-uglify');
-    return gulp.src(dirs.assets.dist.scripts + "/**/*.js")
-        .pipe(uglify({
-			preserveComments: 'license'
-		}).on('error', function(e) {
-          console.error(e);
-          this.emit('end');
-        }))
-        .pipe(gulp.dest(dirs.assets.dist.scripts));
-});
+	return stream.pipe(gulp.dest(PATHS.dest));
+}
 
-gulp.task('build:styles', ['compile:styles:scss'], () => {
-	let uglify = require('gulp-uglifycss');
-    return gulp.src(dirs.assets.dist.styles + '/**/*.css')
-		.pipe(uglify())
-		.pipe(gulp.dest(dirs.assets.dist.styles));
-});
+function templates() {
+	return gulp.src(PATHS.src + FILES.pug)
+		.pipe(pug())
+		.pipe(gulp.dest(PATHS.dest));
+}
 
-gulp.task('build', ['build:javascript', 'build:styles']);
-
-// # Linting tasks
-gulp.task('lint:javascript:es6', () => {
-	let eslint = require('gulp-eslint');
-	return gulp.src([dirs.assets.src.scripts + '/**/*.js'])
+// # Linter functions
+function lintScripts() {
+	let stream = gulp.src(PATHS.src + FILES.es6)
         .pipe(eslint())
         .pipe(eslint.format());
-});
 
-gulp.task('lint:styles:scss', () => {
-	let stylelint = require('gulp-stylelint');
-	return gulp.src([dirs.assets.src.styles + '/**/*.scss'])
+	if(PRODUCTION)
+		stream = stream.pipe(eslint.failAfterError());
+
+	return stream;
+}
+
+function lintStyles() {
+	return gulp.src(PATHS.src + FILES.scss)
         .pipe(stylelint({
-        	failAfterError: false,
+        	failAfterError: PRODUCTION,
 			reporters: [
-				{formatter: 'string', console: true}
+				{
+					formatter: 'string',
+					console: true
+				}
 			]
         }));
-});
+}
 
-gulp.task('lint', ['lint:javascript:es6', 'lint:styles:scss']);
+// # Watcher functions
+function watch() {
+	gulp.watch(PATHS.src + FILES.scss, gulp.parallel(styles, lintStyles));
+    gulp.watch(PATHS.src + FILES.es6, gulp.parallel(scripts, lintScripts));
+    gulp.watch(PATHS.src + FILES.pug, templates);
+}
+
+// Gulp tasks
+exports.clean = clean;
+
+let compile = gulp.series(clean, gulp.parallel(scripts, styles, templates));
+exports.compile = compile;
+
+let lint = gulp.parallel(lintScripts, lintStyles);
+exports.lint = lint;
 
 // # Watcher tasks
-gulp.task('watch:compile', ['compile'], () => {
-	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['compile:styles:scss']);
-    gulp.watch(dirs.assets.src.scripts + '/**/*.js', ['compile:javascript:es6']);
-});
-
-gulp.task('watch:lint', ['lint'], () => {
-	gulp.watch(dirs.assets.src.styles + '/**/*.scss', ['lint:styles:scss']);
-    gulp.watch(dirs.assets.src.scripts + '/**/*.js', ['lint:javascript:es6']);
-});
-
-gulp.task('watch', ['watch:lint', 'watch:compile']);
+exports.watch = watch;
 
 // # Default tasks
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series(compile, watch));
+
+// # User Tasks
