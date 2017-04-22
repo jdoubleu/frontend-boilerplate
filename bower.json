@@ -18,6 +18,7 @@
     "node_modules",
     "bower_components",
     "assets/vendor",
+    "assets/dist",
     "test",
     "tests"
   ]
