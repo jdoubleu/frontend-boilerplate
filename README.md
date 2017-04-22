@@ -61,10 +61,6 @@ pass the sass files to the sass compiler in the gulp task in `gulpfile.js`.
 	...
 ```
 
-#### Merge Scripts together
-This is a feature and if you want all your scripts megred together into a single one (e.g. `all.js`) there is already a solution.
-Check out the [`merge-scripts`](https://gitlab.com/jdoubleu/frontend-boilerplate/tree/merge-scripts) branch and maybe change the name of the merged file in the [`gulpfile.js`](https://gitlab.com/jdoubleu/frontend-boilerplate/blob/merge-scripts/gulpfile.js).
-
 ### Workflow
 When you are developing your project, run the following commands:
 ```
