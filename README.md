@@ -47,7 +47,7 @@ bower install --save <package>
 ```
 and include it in your html's heads
 ```
-<script src="assets/vendor/<package>/somelib.js"></script>
+<script src="dist/vendor/<package>/somelib.js"></script>
 ```
 
 When you want to use a frontend framework (e.g. [Bootstrap](getbootstrap.com)) it's nice if 
