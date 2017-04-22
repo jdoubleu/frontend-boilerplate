@@ -100,11 +100,13 @@ src/
 Of course you can mix them or use your own. 
 Through the ["globstar"](https://github.com/isaacs/node-glob#glob-primer) you are free to use every structure. 
 
+The `assets` folder may ship assets, like images.
+
 #### Linting
 You can lookup all SCSS linting rules here: [https://stylelint.io/user-guide/rules/](https://stylelint.io/user-guide/rules/).
 There are more detailed information about what is wrong.
 
-### Workflow
+#### CI
 There's already a configuration for the GitLab CI. On every push it triggers a linting.
 On pushes to master it will build an artifact. The general workflow would be developing in a `develop` branch, 
 while merging into a `master` branch means a release.
