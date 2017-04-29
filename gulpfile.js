@@ -110,18 +110,24 @@ function watch() {
 }
 
 // Gulp tasks
+clean.description = "Deletes all compile/generated files in destination folder.";
 exports.clean = clean;
 
 let compile = gulp.series(clean, gulp.parallel(scripts, styles, templates));
+compile.description = "Builds styles and scripts out of ES6 and SCSS files. Also minifies them for production builds.";
 exports.compile = compile;
 
 let lint = gulp.parallel(lintScripts, lintStyles);
+lint.description = "Lints styles and scripts using stylelint and eslint.";
 exports.lint = lint;
 
 // # Watcher tasks
+watch.description = "Watches for styles or scripts file changed to compile them.";
 exports.watch = watch;
 
 // # Default tasks
-exports.default = gulp.series(compile, watch);
+let _default = gulp.series(compile, watch);
+_default.description = "Initially compiles all styles and scripts, then watches for changes.";
+exports.default = _default;
 
 // # User Tasks
