@@ -47,8 +47,9 @@ function scripts() {
 			  console.error(e);
 			  this.emit('end');
 			}));
-	} else
+	} else {
 		stream.pipe(sourcemaps.write('./'));
+	}
 
 	return stream.pipe(gulp.dest(PATHS.dest));
 }
@@ -62,8 +63,9 @@ function styles() {
     if(PRODUCTION) {
     	let uglify = require('gulp-clean-css');
     	stream.pipe(uglify());
-	} else
+	} else {
 		stream.pipe(sourcemaps.write('./'));
+	}
 
 	return stream.pipe(gulp.dest(PATHS.dest));
 }
@@ -80,8 +82,9 @@ function lintScripts() {
         .pipe(eslint())
         .pipe(eslint.format());
 
-	if(PRODUCTION)
+	if(PRODUCTION) {
 		stream = stream.pipe(eslint.failAfterError());
+	}
 
 	return stream;
 }
@@ -107,18 +110,24 @@ function watch() {
 }
 
 // Gulp tasks
+clean.description = "Deletes all compile/generated files in destination folder.";
 exports.clean = clean;
 
 let compile = gulp.series(clean, gulp.parallel(scripts, styles, templates));
+compile.description = "Builds styles and scripts out of ES6 and SCSS files. Also minifies them for production builds.";
 exports.compile = compile;
 
 let lint = gulp.parallel(lintScripts, lintStyles);
+lint.description = "Lints styles and scripts using stylelint and eslint.";
 exports.lint = lint;
 
 // # Watcher tasks
+watch.description = "Watches for styles or scripts file changed to compile them.";
 exports.watch = watch;
 
 // # Default tasks
-gulp.task('default', gulp.series(compile, watch));
+let _default = gulp.series(compile, watch);
+_default.description = "Initially compiles all styles and scripts, then watches for changes.";
+exports.default = _default;
 
 // # User Tasks
