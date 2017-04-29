@@ -119,6 +119,6 @@ exports.lint = lint;
 exports.watch = watch;
 
 // # Default tasks
-gulp.task('default', gulp.series(compile, watch));
+exports.default = gulp.series(compile, watch);
 
 // # User Tasks
