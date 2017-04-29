@@ -47,8 +47,9 @@ function scripts() {
 			  console.error(e);
 			  this.emit('end');
 			}));
-	} else
+	} else {
 		stream.pipe(sourcemaps.write('./'));
+	}
 
 	return stream.pipe(gulp.dest(PATHS.dest));
 }
@@ -62,8 +63,9 @@ function styles() {
     if(PRODUCTION) {
     	let uglify = require('gulp-clean-css');
     	stream.pipe(uglify());
-	} else
+	} else {
 		stream.pipe(sourcemaps.write('./'));
+	}
 
 	return stream.pipe(gulp.dest(PATHS.dest));
 }
@@ -80,8 +82,9 @@ function lintScripts() {
         .pipe(eslint())
         .pipe(eslint.format());
 
-	if(PRODUCTION)
+	if(PRODUCTION) {
 		stream = stream.pipe(eslint.failAfterError());
+	}
 
 	return stream;
 }
